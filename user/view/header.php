@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./view/asset/RemixIcon_Fonts_v4.2.0/fonts/remixicon.css">
-   <link rel="stylesheet" href="./view/asset/csss/style.css">
+   <link rel="stylesheet" href="./view/asset/css/style.css">
     <title>DYUCLOTHER</title>
 </head>
 <body>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="header-logo">
-                    <a href="index.php"><img src="./view/asset/images/e46fd43976ade19f2b8baa48b95073e6.jpg" alt=""></a>
+                    <a href="index.php"><img src="./view/asset/images/meme.jpg" alt=""></a>
                 </div>
                 <div class="header-logo-mobile">
                     <img src="./view/asset/images/pngtree-logo-with-beautiful-angel-anime-character-png-image_9052786.png" alt="" style="width: 70px;">
