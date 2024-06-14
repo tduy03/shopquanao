@@ -1,0 +1,445 @@
+:root{
+    --main-gb-color:#414e66;
+    --sub-bg-color:#f2f7fb;
+    --top-height:70px;
+    --main-transition: all 0.3s ease
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: unset;
+}
+li{
+    list-style: none;
+}
+.row-grid{
+    display: grid;
+    justify-content: space-between;
+}
+.flex-box{
+    display: flex;
+  
+}
+.main-btn{
+    padding: 10px 12px;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.main-btn:hover{
+    background-color: #5c6e90;
+    color: whitesmoke;
+}
+/*--chỉnh sửa ảnh sản phẩm--*/
+.delete-class{
+    padding: 3px;
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.edit-class{
+    padding: 3px;
+    background-color: rgb(2, 172, 36);
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.confirm-order{
+    padding: 3px;
+    background-color: rgb(33, 121, 244);
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.non-confirm-order{
+    padding: 3px;
+    background-color: rgb(174, 160, 30);
+    color: whitesmoke;
+    border-radius: 5px;
+}
+/*----cập nhập ảnh sản phẩm--*/
+.img-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.img-container img {
+    display: block;
+    width: 30%; /* Đảm bảo hình ảnh lấp đầy không gian trong .img-container */
+    height: auto; /* Đảm bảo tỷ lệ khung hình ảnh tự động */
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 50%; /* Bo tròn nút xóa */
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 100px; /* Kích thước ảnh */
+    height: 100px; /* Kích thước ảnh */
+    overflow: hidden; /* Ảnh sẽ không vượt ra ngoài khung .image-container */
+    
+}
+
+/*--nút phân trang --*/
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 3px 4px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 2px solid black;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #000000;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/*--chi tiết sản phẩm--*/
+
+/*------------------main admin----------------*/
+.admin .row-grid{
+    grid-template-columns: 20% 80%;
+}
+
+/*------------------Sidebar----------------*/
+.admin-sidebar{
+    height: 110vh;
+    background-color: var(--main-gb-color);
+    
+}
+.admin-sidebar-top{
+    text-align: center;
+    height: var(--top-height);
+    border-bottom: 1px solid gray;
+
+}
+.admin-sidebar-top img{
+    width: 70px;
+}
+.admin-sidebar-content > ul > li > a{
+    display: block;
+    display: flex;
+    justify-content: flex-start;
+}
+.admin-sidebar-content > ul > li > a i:last-child{
+    margin-left: auto;
+
+}
+
+
+.admin-sidebar-content ul li a i {
+    margin-right: 6px;
+    
+}
+.admin-sidebar-content{
+    padding: 30px 0 0 30px;
+    color: var(--sub-bg-color);
+
+}
+.admin-sidebar-content ul li{
+    padding: 12px 6px;
+    transition: var(--main-transition)
+}
+.admin-sidebar-content ul li:hover{
+    background-color: #26334a;
+}
+.sub-menu{
+    height: 0;
+    overflow: hidden;
+    transition: var(--main-transition);
+}
+
+/*.sub-menu.active{
+    height: 70px;
+    
+}*/
+.sub-menu li :hover{
+    color: rgb(239, 213, 15);
+}
+/*------------------content----------------*/
+.admin-content{
+    background-color: var(--sub-bg-color);
+}
+.admin-content-top{
+    display: flex;
+    justify-content: space-between;
+    height: var(--top-height);
+    border-bottom: 1px solid gray;
+    padding: 0 12px;
+    background-color: #cad3e6;
+}
+.admin-content-top .flex-box{
+    height: 70px;
+    align-items: center;
+}
+.admin-content-top i{
+    margin-right: 12px;
+}
+.admin-content-top-right ul li:last-child p{
+    cursor: pointer;
+}
+.admin-content-top-right ul li:first-child i{
+    position: relative;
+}
+.admin-content-top-right ul li i[data-number]::after {
+    position: absolute;
+    content: attr(data-number);
+    height: 20px;
+    width: 20px;
+    display: flex;
+    background-color: rgb(2, 172, 36);
+    border-radius: 50%;
+    top: -12px;
+    right: -12px;
+    color: whitesmoke;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Điều chỉnh kích thước font cho phù hợp */
+    animation: notification;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+}
+
+.admin-content-top-right ul li:nth-child(2) i{
+    position: relative;
+}
+.admin-content-top-right ul li i[data-number1]::after {
+    position: absolute;
+    content: attr(data-number1);
+    height: 20px;
+    width: 20px;
+    display: flex;
+    background-color: rgb(243, 53, 189);
+    border-radius: 50%;
+    top: -12px;
+    right: -12px;
+    color: whitesmoke;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Điều chỉnh kích thước font cho phù hợp */
+    animation: notification;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+}
+@keyframes notification {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }   
+}
+.admin-content-main-title h1{
+    padding: 12px;
+    font-weight: 500;
+    position: relative;
+}
+.admin-content-main-title h1::before{
+    position: absolute;
+    display: block;
+    content: "";
+    height: 4px;
+    width: 70px;
+    background-color: rgb(99, 99, 99);
+    bottom: 6px;
+    left: 12px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+/*.admin-content-main-content{
+}*/
+
+/*------- Thêm sản phẩm ---------*/
+
+.admin-content-main-content-product-add{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 12px;
+    column-gap: 20px;
+}
+.admin-content-main-content-left input{
+    height: 40px;
+    border: 0.5px solid gray;
+    margin-bottom: 20px;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 6px;
+    
+}
+.admin-content-main-content-two-input{
+    display: flex;
+    justify-content: space-between;
+}
+.admin-content-main-content-two-input input{
+    width: 49%;
+}
+.admin-content-main-content-two-input select{
+    width: 30%; /* Chiều rộng của select */
+    margin-bottom: 20px; /* Khoảng cách phía dưới select */
+    padding: 10px; /* Khoảng cách bên trong select */
+    border-radius: 5px;
+}
+/* checkbox */
+.admin-content-main-content-one-input {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Khoảng cách giữa các ô chọn */
+    margin-bottom: 20px;
+}
+/* Style for size option labels */
+.size-label {
+    text-align: center;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none; /* Ngăn chọn văn bản */
+    background-color: white;
+    width: 60px;
+    line-height: 24px; /* Căn giữa nội dung theo chiều dọc */
+}
+
+/* Style for size checkboxes */
+.size-checkbox {
+    display: none; /* Ẩn checkbox gốc */
+}
+
+/* Style for checked state */
+.size-checkbox:checked + .size-label {
+    border-color: #333; /* Màu viền đậm hơn khi được chọn */
+    background-color: #000000; /* Màu nền thay đổi khi được chọn */
+    color: whitesmoke;
+}
+
+/* Style for hovered state */
+.size-label:hover {
+    border-color: #666; /* Màu viền khi di chuột */
+}
+
+
+/*.admin-content-main-content-left textarea{
+    height: 200px;
+    width: 100%;
+    margin-bottom: 20px;
+    outline: none;
+    padding: 6px;
+    border: 0.5px solid gray;
+    border-radius: 5px;
+}*/
+.admin-content-main-content-right-image input{
+    display: none;
+}
+.admin-content-main-content-right-images input{
+    display: none;
+}
+.admin-content-main-content-right label{
+    padding: 9px 12px;
+    background-color: var(--main-gb-color);
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+}
+.admin-content-main-content-right label:hover{
+    background-color: #5c6e90;
+    color: whitesmoke;
+}
+.image-show, .images-show{
+    min-height: 150px;
+}
+
+/*CKeditor*/
+.admin{
+    max-height: 1;
+}
+.admin-content-main-content-left{
+    max-height: 700px;
+    overflow: scroll;
+}
+/*-----product-list-----*/
+.admin-content-main-content-product-list{
+    background-color: white;
+    padding: 0 12px;
+    
+}
+.admin-content-main-content-product-list table{
+    width: 100%;
+    padding: 12px 0;
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+}
+.admin-content-main-content-product-list table, th, td{
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+    
+}
+.admin-content-main-content-product-list table th{
+    background-color: black;
+    color: whitesmoke;
+    padding: 6px 0;
+}
+/*-----oder-list-----*/
+.admin-content-main-content-order-list{
+    background-color: white;
+    padding: 0 12px;
+}
+.admin-content-main-content-order-list table{
+    width: 100%;
+    padding: 12px 0;
+    border-collapse: collapse;
+    border: 1px solid #dddddd;
+}
+.admin-content-main-content-order-list table a{
+    display: inline-block;
+}
+.admin-content-main-content-order-list table, th, td{
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+    
+}
+.admin-content-main-content-order-list table th{
+    background-color: black;
+    color: whitesmoke;
+    padding: 6px 0;
+}
+.admin-content-main-content-order-list table td{
+    padding: 6px 0;
+    
+}
