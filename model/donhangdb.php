@@ -135,4 +135,47 @@
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Định nghĩa hàm đếm số lượng đơn hàng theo trạng thái
+    function count_orders_by_status($status) {
+        $conn = connectdb();
+    
+        // Điều kiện tìm kiếm theo trạng thái "Chưa Xác Nhận"
+        $search_status = '';
+        if ($status == 'Chưa Xác Nhận') {
+            $search_status = 'Chưa xác nhận';
+        } else {
+            $search_status = $status;
+        }
+    
+        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM tbl_oder WHERE trangthai = ?");
+        if (!$stmt) {
+            die("Lỗi chuẩn bị truy vấn: " . $conn->errorInfo());
+        }
+        $stmt->bindParam(1, $search_status);
+        if (!$stmt->execute()) {
+            die("Lỗi thực thi truy vấn: " . $stmt->errorInfo());
+        }
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count = $result['count'];
+        $stmt->closeCursor(); // Đóng con trỏ kết quả
+    
+        return $count;
+    }
+    function count_new_orders() {
+        $conn = connectdb();
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM tbl_oder WHERE trangthai = 'Mới'");
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+    // Hàm đếm số lượng đơn hàng theo trạng thái
+    function count_new_and_pending_orders() {
+        $conn = connectdb();
+
+        // Đếm số đơn hàng có trạng thái là "Mới" hoặc "Chưa Xác Nhận"
+        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM tbl_oder WHERE trangthai IN ('Mới', 'Chưa Xác Nhận')");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['count'];
+    }
 ?>

@@ -2,11 +2,13 @@
 // Load danh sách danh mục
 $dsdm = getall_dm();
 
-// Lấy chi tiết sản phẩm theo ID
+// Lấy chi tiết sản phẩm theo ID nếu có
+$spct = [];
 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
     $spct = getonesp($_GET['id']);
 }
 
+// Xử lý cập nhật sản phẩm khi form được submit
 if ((isset($_POST['capnhat']) && $_POST['capnhat'])) {
     $id = $_POST['id'];
     $iddm = $_POST['iddm'];
@@ -16,33 +18,56 @@ if ((isset($_POST['capnhat']) && $_POST['capnhat'])) {
     $mota = $_POST['mota'];
     $dacdiem = $_POST['dacdiem'];
     $size = isset($_POST['size']) ? implode(',', $_POST['size']) : '';
-    $ngaytao = date('Y-m-d'); // Lấy ngày hiện tại
+    $ngaytao = $_POST['ngaytao']; // Giữ nguyên ngày tạo hiện tại
     $chatlieu = $_POST['chatlieu'];
-    
-    $img = "";
-    // Xử lý upload ảnh
+
+    $img = $spct[0]['img']; // Giữ nguyên ảnh đại diện hiện tại nếu không có sự thay đổi
+
+    // Xử lý upload ảnh mới cho ảnh đại diện nếu có
     if (isset($_FILES["hinh"]) && $_FILES["hinh"]["error"] == 0) {
         $target_dir = "../uploads/";
         $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-        $img = $target_file;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
         // Kiểm tra định dạng file ảnh
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" && $imageFileType != "webp") {
-            // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif', 'webp'])) {
             $uploadOk = 0;
         }
 
         if ($uploadOk == 1) {
-            move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
-        } else {
-            $img = "";
+            if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                $img = $target_file;
+            }
         }
     }
 
+    // Xử lý upload ảnh mới cho ảnh sản phẩm (`hinhsp`) nếu có
+    if (!empty($_FILES["hinhsp"])) {
+        $target_dir_sp = "../uploads/";
+        foreach ($_FILES["hinhsp"]["tmp_name"] as $key => $tmp_name) {
+            $target_file_sp = $target_dir_sp . basename($_FILES["hinhsp"]["name"][$key]);
+            $uploadOk_sp = 1;
+            $imageFileType_sp = strtolower(pathinfo($target_file_sp, PATHINFO_EXTENSION));
+
+            // Kiểm tra định dạng file ảnh
+            if (!in_array($imageFileType_sp, ['jpg', 'png', 'jpeg', 'gif', 'webp'])) {
+                $uploadOk_sp = 0;
+            }
+
+            if ($uploadOk_sp == 1) {
+                if (move_uploaded_file($tmp_name, $target_file_sp)) {
+                    // Thực hiện lưu đường dẫn vào cơ sở dữ liệu hoặc xử lý khác tùy vào logic của bạn
+                    // Ví dụ: insert_image_library($id, $target_file_sp);
+                }
+            }
+        }
+    }
+
+    // Cập nhật thông tin sản phẩm
     updatesp($id, $iddm, $tensp, $gia, $giacu, $img, $mota, $dacdiem, $size, $ngaytao, $chatlieu);
+
+    // Chuyển hướng về trang danh sách sản phẩm sau khi cập nhật thành công
     header("Location: index.php?act=sanpham");
     exit;
 }
@@ -117,16 +142,16 @@ if ((isset($_POST['capnhat']) && $_POST['capnhat'])) {
                 <div class="admin-content-main-content-right-images">
                     <label for="files">Ảnh Sản Phẩm</label>
                     <input type="file" id="files" name="hinhsp[]" multiple>
-                    <div class="images-show" id="images-show">
-                        <?php
-                        $product_images = get_product_images($spct[0]['id']);
-                        foreach ($product_images as $image) {
-                            echo '<div class="image-container">';
-                            echo '<img src="'.$image['img'].'" alt="" width="100px">';
-                            echo '<button type="button" class="remove-btn" onclick="deleteImage(\''.$image['img'].'\')">X</button>';
-                            echo '</div>';
-                        }
-                        ?>
+                        <div class="images-show" id="images-show">
+                            <?php
+                            $product_images = get_product_images($spct[0]['id']);
+                            foreach ($product_images as $image) {
+                                echo '<div class="image-container">';
+                                echo '<img src="'.$image['img'].'" alt="" width="100px">';
+                                echo '<button type="button" class="remove-btn" onclick="deleteImage(\''.$image['img'].'\')">X</button>';
+                                echo '</div>';
+                            }
+                            ?>
                 </div>
             </div>
             </form>
