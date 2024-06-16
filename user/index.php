@@ -47,6 +47,9 @@ if (isset($_GET['act'])) {
         case 'viewcart':
             include './view/cart.php';
             break;
+        case 'empty':
+            include './view/empty_cart.php';
+            break;
         case 'delcart':
             if (isset($_GET['i'])) {
                 $i = $_GET['i'];

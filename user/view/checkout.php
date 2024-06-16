@@ -71,7 +71,7 @@
                                             <p>'.$item[6].'</p>
                                         </div>
                                     </td>
-                                    <td><p style="padding: 10px;">'. number_format($tt).'<sup>đ</sup></p></td>
+                                    <td><p style="padding: 10px;">'. number_format($tt, 0, '.', '.').'<sup>đ</sup></p></td>
                                 </tr>';
                             }
                         }
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding-bottom:25px;" colspan="2">Tạm tính</td>
-                            <td><p><?php echo number_format($tong)  ?><sup>đ</sup></p></td>
+                            <td><p><?php echo number_format($tong, 0, '.', '.')  ?><sup>đ</sup></p></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding-bottom:25px;" colspan="2">Phí vận chuyển</td>
@@ -89,7 +89,7 @@
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding-bottom:25px;" colspan="2">Tổng cộng</td>
-                            <td><p><?php echo number_format($tong) ?><sup>đ</sup></p></td>
+                            <td><p><?php echo number_format($tong, 0, '.', '.') ?><sup>đ</sup></p></td>
                         </tr>
                         <tr>
                             <td colspan="2" ><a href="index.php?act=viewcart" style="color: #0f94f3; padding-bottom:25px;"><p><< Quay lại giỏ hàng</p></a></td>

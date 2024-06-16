@@ -6,8 +6,11 @@
                     <p>DYUCLOTHER</p>
                     <p>Đăng kí thành viên</p>
                     <p>Ưu đãi & Đặc quyền</p>
-                    <p><b>FOLLOW DYUCLOTHER CLUB® IN</b></p>
-                    <p><img src="./view/asset/images/instagram-fill.png" alt=""><img src="./view/asset/images/facebook-circle-fill.png" alt=""><img src="./view/asset/images/youtube-fill.png" alt=""><img src="./view/asset/images/tiktok-fill.png" alt=""></p>
+
+                    <div class="footer-item">
+                        <p><b>FOLLOW DYUCLOTHER CLUB® IN</b></p>
+                        <p><img src="./view/asset/images/instagram-fill.png" alt=""><img src="./view/asset/images/facebook-circle-fill.png" alt=""><img src="./view/asset/images/youtube-fill.png" alt=""><img src="./view/asset/images/tiktok-fill.png" alt=""></p>
+                    </div>
                 </div>
                 <div class="footer-item">
                     <p>CHÍNH SÁCH</p>

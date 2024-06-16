@@ -184,5 +184,15 @@
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    //load ảnh sản phẩm danh mục best selling
+    function get_localbrand_products($category_id, $limit = 5) {
+        $conn = connectdb();
+        $sql = "SELECT * FROM tbl_sanpham WHERE iddm = :category_id LIMIT :limit";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 ?>

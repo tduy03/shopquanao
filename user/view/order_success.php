@@ -70,9 +70,9 @@
                                 <div class="product-details">
                                     <p><b>Sản phẩm:</b> '.$item['tensp'].'</p>
                                     <p><b>Size:</b> '.$item['size'].'</p>
-                                    <p><b>Giá:</b> '.number_format($item['donggia']) .'đ</p>
+                                    <p><b>Giá:</b> '.number_format($item['donggia'], 0, '.', '.') .'đ</p>
                                     <p><b>Số lượng:</b> '.$item['soluong'].'</p>
-                                    <p><b>Thành tiền:</b> '. number_format($tt).'đ</p>
+                                    <p><b>Thành tiền:</b> '. number_format($tt, 0, '.', '.').'đ</p>
                                 </div>
                             </div>';
                         }

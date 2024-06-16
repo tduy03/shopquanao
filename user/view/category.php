@@ -99,9 +99,9 @@
                             echo '<div class="cartegory-right-content-item">
                                     <a href="index.php?act=product&id='.$sp['id'].'"><img src="'.$sp['img'].'" alt="">
                                     <h1>'.$sp['tensp'].'</h1></a>
-                                    <p>'.number_format($sp['gia']).'<sup>đ</sup> <span style="font-weight: 300;
+                                    <p>'.number_format($sp['gia'], 0, '.', '.').'<sup>đ</sup> <span style="font-weight: 300;
                                                                     font-size: small;
-                                                                    text-decoration: line-through;">'.number_format($sp['giacu']).'<sup>đ</sup></span></p></div>';
+                                                                    text-decoration: line-through;">'.number_format($sp['giacu'], 0, '.', '.').'<sup>đ</sup></span></p></div>';
                         }
                     ?>
                 </div>

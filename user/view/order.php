@@ -92,10 +92,10 @@
                                                 <td>
                                                     <p>'.$item['tensp'].'</p>
                                                     <p style="font-size: small;">'.$item['size'].'</p>
-                                                    <p style="font-size: small;">'.number_format($item['donggia']) .'</p>
+                                                    <p style="font-size: small;">'.number_format($item['donggia'], 0, '.', '.') .'</p>
                                                 </td>
                                                 <td>'.$item['soluong'].'</td>
-                                                <td>'. number_format($tt).'<sup>đ</sup></td>
+                                                <td>'. number_format($tt, 0, '.', '.').'<sup>đ</sup></td>
 
                                                 <td>'.$oderinfo[0]['trangthai'].'</td>
                                             </tr>';

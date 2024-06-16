@@ -269,7 +269,7 @@ header .row-flex{
 
 /*slider*/
 .slider{
-    width: 100vw;
+    width: 98.9vw;
     overflow: hidden;
     aspect-ratio: 2.05/1;
     position: relative;
@@ -284,7 +284,7 @@ header .row-flex{
 }
 .slider-item img{
     width: 100vw;
-    height: 90vh;
+    height: 105vh;
 }
 .slider-arrow{
     position: absolute;
@@ -321,6 +321,52 @@ header .row-flex{
 .hot-product-item > span{
     font-size: smaller;
     font-weight: 300;
+}
+
+/*----home---------*/
+.row-grid-hot-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cột */
+    gap: 20px;
+    justify-items: center; 
+    align-items: center; 
+}
+
+.hot-product-item {
+    text-align: center; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* .product-item-price {
+    text-align: center; 
+} */
+
+/* Đảm bảo các ảnh trong phần .slide-three được xếp hàng ngang */
+.slide-three {
+    display: flex;
+    justify-content: space-between; 
+    gap: 1px;
+    margin-left: 2%; 
+}
+
+.slide-three img {
+    width: calc(94% - 1px);
+    height: auto; 
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.big-img .slide-img {
+    width: 100%;
+    margin: 20px 0; 
+}
+
+.big-img img {
+    width: 100%; 
+    height: auto; 
 }
 
 /* footer */
@@ -857,6 +903,34 @@ footer .row-grid{
 }
 .cart-content-left {
     position: relative;
+}
+
+/*---giỏ hàng trống--*/
+.cart-empty-message {
+    text-align: center; /* căn giữa nội dung */
+    margin-top: 20px; /* để căn giữa theo chiều dọc */
+    margin-left: 45% ;
+    opacity: 0.8; /* độ mờ */
+}
+
+.cart-empty-message p {
+    font-size: 23px; /* cỡ chữ */
+    font-weight: bold;
+}
+
+.cart-empty-message a {
+    display: inline-block; /* cho phép căn giữa theo chiều ngang */
+    margin-top: 10px; /* khoảng cách giữa dòng */
+    padding: 10px 20px; /* padding để tạo button dễ nhìn */
+    background-color: #007bff; /* màu nền */
+    color: white; /* màu chữ */
+    text-decoration: none; /* bỏ gạch chân */
+    border-radius: 5px; /* bo góc */
+    transition: background-color 0.3s ease; /* hieu ung chuyen doi */
+}
+
+.cart-empty-message a:hover {
+    background-color: #0056b3; /*doi mau nen khi hover*/
 }
 
 .checkout-buttons {

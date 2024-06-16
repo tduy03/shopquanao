@@ -41,7 +41,7 @@
                 <h1><?= $kq[0]['tensp']?></h1>
                 <span><?= $kq[0]['chatlieu']?></span>
                 <div class="product-item-price">
-                    <p><?= number_format($kq[0]['gia']) ?><sup>đ</sup> <span><?= number_format($kq[0]['giacu'])?><sup>đ</sup></span></p>
+                    <p><?= number_format($kq[0]['gia'], 0, '.', '.') ?><sup>đ</sup> <span><?= number_format($kq[0]['giacu'], 0, '.', '.')?><sup>đ</sup></span></p>
                 </div>
             </div>
             <div class="product-detail-right-des">

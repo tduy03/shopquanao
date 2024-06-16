@@ -25,8 +25,8 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
 $amount = $_SESSION['tongdonhang']; // Lấy tổng đơn hàng từ session
 $orderId = $_SESSION['madh'];
-$redirectUrl = "http://localhost/test/admin1/user/index.php?act=oder";
-$ipnUrl = "http://localhost/test/admin1/user/index.php?act=oder";
+$redirectUrl = "http://localhost/shopquanao/user/index.php?act=order_confirm";
+$ipnUrl = "http://localhost/shopquanao/user/index.php?act=order_confirm";
 $extraData = "";
 
 $requestId = time() . "";
